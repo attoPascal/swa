@@ -6,7 +6,7 @@ import javax.swing.JTextField;
 
 import net.miginfocom.swing.MigLayout;
 
-public class Connection extends JPanel {
+public class ConnectionPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
 	private static final String DEFAULT_URL  = "localhost";
@@ -15,7 +15,7 @@ public class Connection extends JPanel {
 	private JTextField urlField;
 	private JTextField portField;
 	
-	public Connection() {
+	public ConnectionPanel() {
 		this.setLayout(new MigLayout("wrap 2, fill"));
 		
 		urlField  = new JTextField(DEFAULT_URL);

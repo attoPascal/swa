@@ -34,7 +34,7 @@ public class CXFBackendServer {
 			// tell the jax-rs servlet which services exist
 			cxfServlet.setInitParameter("jaxrs.serviceClasses",
 					"swa.ass4.server.DummyRestResource,"
-					+ "swa.ass4.server.RESTUserTest");
+					+ "swa.ass4.server.UserResource");
 
 			httpServer.start();
 			

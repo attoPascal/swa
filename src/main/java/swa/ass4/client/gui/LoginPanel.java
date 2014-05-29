@@ -7,30 +7,40 @@ import javax.swing.JTextField;
 
 import net.miginfocom.swing.MigLayout;
 
-public class Login extends JPanel {
+public class LoginPanel extends JPanel {
 	private static final long serialVersionUID = 1L;
 	
-	private JTextField usernameField;
+	private JTextField userNameField;
 	private JTextField passwordField;
 	
-	public Login() {
+	public LoginPanel() {
 		this.setLayout(new MigLayout("wrap 2, fill"));
 		
-		usernameField = new JTextField();
+		userNameField = new JTextField();
 		passwordField = new JPasswordField();
 	    
 	    this.add(new JLabel("Username"));
-	    this.add(usernameField, "growx");
+	    this.add(userNameField, "growx");
 	    
 	    this.add(new JLabel("Password"));
 	    this.add(passwordField, "growx");
 	}
 	
 	public String getUsername() {
-		return usernameField.getText();
+		String userName = userNameField.getText();
+		if (userName.equals("")) {
+			return ("NoUserName");
+		} else {
+			return userName;
+		}
 	}
 	
 	public String getPassword() {
-		return passwordField.getText();
+		String password = passwordField.getText();
+		if (password.equals("")) {
+			return ("NoPassword");
+		} else {
+			return password;
+		}
 	}
 }

@@ -15,7 +15,7 @@ public class User {
 	private Role role;
 	
 	public User() {
-		this(null, null, null, null, null);
+		this("", "", "", "", null);
 	}
 	
 	public User(String firstName, String lastName, String userName, String password, Role role) {
