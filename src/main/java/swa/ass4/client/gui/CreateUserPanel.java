@@ -43,25 +43,13 @@ public class CreateUserPanel extends JPanel {
 	    this.add(roleSelect, "growx");
 	}
 	
-	/*public String getOldPassword() {
-		String password = oldPasswordField.getText();
-		if (password.equals("")) {
-			throw new RuntimeException("No old password given");
-		} else {
-			return password;
-		}
+	public User getUser() {
+		return new User(
+			firstNameField.getText(),
+			lastNameField.getText(),
+			userNameField.getText(),
+			passwordField.getText(),
+			roleSelect.getItemAt(roleSelect.getSelectedIndex())
+		);
 	}
-	
-	public String getNewPassword() {
-		String password = newPasswordField1.getText();
-		if (password.equals("")) {
-			throw new RuntimeException("No new password given");
-		
-		} else if (!password.equals(newPasswordField2.getText())) {
-			throw new RuntimeException("New passwords do not match");
-			
-		} else {
-			return password;
-		}
-	}*/
 }

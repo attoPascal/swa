@@ -12,34 +12,24 @@ import swa.ass4.client.gui.CreateUserPanel;
 import swa.ass4.domain.User;
 
 public class CreateUser implements ActionListener {
-	private User user;
 	private WebTarget target;
 	
-	public CreateUser(User user, WebTarget target) {
-		this.user = user;
+	public CreateUser(WebTarget target) {
 		this.target = target;
 	}
 	
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		CreateUserPanel panel = new CreateUserPanel();
-		JOptionPane.showMessageDialog(null, panel, "CreateUser", JOptionPane.PLAIN_MESSAGE);
+		JOptionPane.showMessageDialog(null, panel, "Create User", JOptionPane.PLAIN_MESSAGE);
 		
-		/*if (!panel.getOldPassword().equals(user.getPassword())) {
-			throw new RuntimeException("Wrong old password entered");
-		} else {
-			WebTarget userTarget = target.path("users").path(user.getUserName());
-			String password = panel.getNewPassword();
-			
-			// update server
-			Entity<String> passwordEntity = Entity.entity(password, MediaType.TEXT_PLAIN);
-			String response = userTarget.request(MediaType.TEXT_PLAIN).post(passwordEntity, String.class);
-			
-			// update local user object
-			user.setPassword(password);
-			
-			System.out.println(response);
-		}*/
+		WebTarget userTarget = target.path("users");
+		User newUser = panel.getUser();
+		
+		Entity<User> userEntity = Entity.entity(newUser, MediaType.TEXT_XML);
+		User response = userTarget.request(MediaType.TEXT_XML).post(userEntity, User.class);
+		
+		System.out.println("User " + response.getUserName() + " created");
 	}
 
 }

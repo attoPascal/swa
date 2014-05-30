@@ -33,7 +33,7 @@ public class UpdatePassword implements ActionListener {
 			
 			// update server
 			Entity<String> passwordEntity = Entity.entity(password, MediaType.TEXT_PLAIN);
-			String response = userTarget.request(MediaType.TEXT_PLAIN).post(passwordEntity, String.class);
+			String response = userTarget.request(MediaType.TEXT_PLAIN).put(passwordEntity, String.class);
 			
 			// update local user object
 			user.setPassword(password);

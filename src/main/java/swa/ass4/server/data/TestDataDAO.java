@@ -1,7 +1,9 @@
 package swa.ass4.server.data;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
+import java.util.ListIterator;
 
 import swa.ass4.domain.User;
 
@@ -38,6 +40,34 @@ public class TestDataDAO implements DAO {
 		return new User();
 	}
 	
+	@Override
+	public void addUser(User user) {
+		users.add(user);
+	}
+
+	@Override
+	public void updateUser(String userName, User user) {
+		ListIterator<User> it = users.listIterator();
+		
+		while (it.hasNext()) {
+			User u = it.next();
+			
+			if (u.getUserName().equals(userName)) {
+				it.set(user);
+			}
+		}
+	}
+	
+	@Override
+	public void deleteUser(String userName) {
+		Iterator<User> it = users.iterator();
+		while (it.hasNext()) {
+		    if (it.next().getUserName().equals(userName)) {
+		        it.remove();
+		    }
+		}
+	}
+	
 	private void initUsers() {
 		users = new ArrayList<User>();
 		
@@ -63,5 +93,4 @@ public class TestDataDAO implements DAO {
 		users.add(new User("Viserion", "Targaryen", "a1200011", "abc11", User.Role.STUDENT));
 		users.add(new User("Rhaegal", "Targaryen", "a1200012", "abc12", User.Role.STUDENT));
 	}
-
 }
