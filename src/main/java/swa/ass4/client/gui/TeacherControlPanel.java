@@ -3,6 +3,7 @@ package swa.ass4.client.gui;
 import javax.swing.JButton;
 import javax.ws.rs.client.WebTarget;
 
+import swa.ass4.client.listeners.CreateCourse;
 import swa.ass4.client.listeners.UpdatePassword;
 import swa.ass4.domain.User;
 
@@ -15,8 +16,11 @@ public class TeacherControlPanel extends ControlPanel {
 		JButton b1 = new JButton("Update Password");
 		b1.addActionListener(new UpdatePassword(user, target));
 		
+		JButton b2 = new JButton("Create Course");
+		b2.addActionListener(new CreateCourse(user, target));
+		
 		this.add(b1, "growx");
-	    this.add(new JButton("Create Course"), "growx");
+	    this.add(b2, "growx");
 	    this.add(new JButton("Grade All"), "growx");
 	    this.add(new JButton("Grade Single"), "growx");
 	    

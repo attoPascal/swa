@@ -1,5 +1,7 @@
 package swa.ass4.domain;
 
+import java.util.Map;
+
 import javax.xml.bind.annotation.XmlRootElement;
 
 @XmlRootElement
@@ -8,22 +10,28 @@ public class User {
 		ADMINISTRATOR, STUDENT, TEACHER;
 	}
 	
+	public enum Grade {
+		GRADE_1, GRADE_2, GRADE_3, GRADE_4, GRADE_5;
+	}
+	
 	private String firstName;
 	private String lastName;
 	private String userName;
 	private String password;
 	private Role role;
+	private Map<Course, Grade> grades;
 	
 	public User() {
-		this("", "", "", "", null);
+		this("", "", "", "", null, null);
 	}
 	
-	public User(String firstName, String lastName, String userName, String password, Role role) {
+	public User(String firstName, String lastName, String userName, String password, Role role, Map<Course, Grade> grades) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
 		this.password = password;
 		this.role = role;
+		this.grades = grades;
 	}
 	
 	public String toString() {
@@ -68,5 +76,17 @@ public class User {
 
 	public void setRole(Role role) {
 		this.role = role;
+	}
+
+	public Map<Course, Grade> getGrades() {
+		return grades;
+	}
+
+	public void setGrades(Map<Course, Grade> grades) {
+		this.grades = grades;
+	}
+
+	public void addGrade(Course course, Grade grade) {
+		grades.put(course, grade);
 	}
 }

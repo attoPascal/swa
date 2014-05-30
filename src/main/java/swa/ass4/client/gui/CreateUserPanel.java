@@ -1,11 +1,14 @@
 package swa.ass4.client.gui;
 
+import java.util.HashMap;
+
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JPasswordField;
 import javax.swing.JTextField;
 
+import swa.ass4.domain.Course;
 import swa.ass4.domain.User;
 import net.miginfocom.swing.MigLayout;
 
@@ -49,7 +52,8 @@ public class CreateUserPanel extends JPanel {
 			lastNameField.getText(),
 			userNameField.getText(),
 			passwordField.getText(),
-			roleSelect.getItemAt(roleSelect.getSelectedIndex())
+			roleSelect.getItemAt(roleSelect.getSelectedIndex()),
+			new HashMap<Course, User.Grade>()
 		);
 	}
 }
