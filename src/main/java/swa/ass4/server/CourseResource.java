@@ -1,12 +1,12 @@
 package swa.ass4.server;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
-import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -49,24 +49,42 @@ public class CourseResource {
     	return dao.getCourse(course.getId());
     }
 	
-	/*@GET
-	@Path("/{username}")
+	@GET
+	@Path("/lecturers/{username}")
     @Produces("text/xml")
-	public User getUser(@PathParam("username") String userName) {
-		return dao.getUser(userName);
-	}
-	
-	@PUT
-	@Path("/{username}")
-	@Consumes("text/xml")
-	@Produces("text/xml")
-	public User updateUser(@PathParam("username") String userName, User user) {
-		dao.updateUser(userName, user);
+	public List<Course> getLecturerCourses(@PathParam("username") String userName) {
+		List<Course> courses = dao.getCourses();
+		List<Course> lecturerCourses = new ArrayList<>();
 		
-		return dao.getUser(userName);
+		for (Course c : courses) {
+			if (c.getLecturer().getUserName().equals(userName)) {
+				lecturerCourses.add(c);
+			}
+		}
+		
+		return lecturerCourses;
 	}
 	
-	@PUT
+	@GET
+	@Path("/students/{courseid}")
+	@Produces("text/xml")
+	public List<User> getStudents(@PathParam("courseid") int courseId) {
+		Course course = dao.getCourse(courseId);
+		
+		List<User> users = dao.getUsers();
+		List<User> courseStudents = new ArrayList<>();
+		
+		for (User u : users) {
+			Map<Course, User.Grade> courses = u.getCourses();
+			if (courses != null && courses.containsKey(course)) {
+				courseStudents.add(u);
+			}
+		}
+		
+		return courseStudents;
+	}
+	
+	/*@PUT
 	@Path("/{username}")
 	@Consumes("text/plain")
 	@Produces("text/plain")
