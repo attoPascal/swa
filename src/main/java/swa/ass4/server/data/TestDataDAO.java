@@ -85,24 +85,24 @@ public class TestDataDAO implements DAO {
 	private void initUsers() {
 		users = new HashMap<>();
 		
-		addUser(new User("Eddard", "Stark", "estark", "wolf", User.Role.ADMINISTRATOR, null));
-		addUser(new User("Robert", "Baratheon", "rbaratheon", "stag", User.Role.ADMINISTRATOR, null));
-		addUser(new User("Tywin", "Lannister", "tlannister", "lion", User.Role.ADMINISTRATOR, null));
+		addUser(new User("Eddard", "Stark", "estark", "wolf", null, User.Role.ADMINISTRATOR, null));
+		addUser(new User("Robert", "Baratheon", "rbaratheon", "stag", null, User.Role.ADMINISTRATOR, null));
+		addUser(new User("Tywin", "Lannister", "tlannister", "lion", null, User.Role.ADMINISTRATOR, null));
 		
-		addUser(new User("Aemon", "Targaryen", "atargaryen", "at", User.Role.TEACHER, null));
-		addUser(new User("Syrio", "Forel", "sforel", "sf", User.Role.TEACHER, null));
-		addUser(new User("Jorah", "Mormont", "jmormont", "jm", User.Role.TEACHER, null));
-		addUser(new User("Davos", "Seaworth", "dseaworth", "ds", User.Role.TEACHER, null));
+		addUser(new User("Aemon", "Targaryen", "atargaryen", "at", null, User.Role.TEACHER, null));
+		addUser(new User("Syrio", "Forel", "sforel", "sf", null, User.Role.TEACHER, null));
+		addUser(new User("Jorah", "Mormont", "jmormont", "jm", null, User.Role.TEACHER, null));
+		addUser(new User("Davos", "Seaworth", "dseaworth", "ds", null, User.Role.TEACHER, null));
 		
-		addUser(new User("Robb", "Stark", "a1200001", "abc1", User.Role.STUDENT, new HashMap<Course, User.Grade>()));
-		addUser(new User("Jon", "Snow", "a1200002", "abc2", User.Role.STUDENT, new HashMap<Course, User.Grade>()));
-		addUser(new User("Sansa", "Stark", "a1200003", "abc3", User.Role.STUDENT, new HashMap<Course, User.Grade>()));
-		addUser(new User("Arya", "Stark", "a1200004", "abc4", User.Role.STUDENT, new HashMap<Course, User.Grade>()));
-		addUser(new User("Bran", "Stark", "a1200005", "abc5", User.Role.STUDENT, new HashMap<Course, User.Grade>()));
-		addUser(new User("Rickon", "Stark", "a1200006", "abc6", User.Role.STUDENT, new HashMap<Course, User.Grade>()));
-		addUser(new User("Joffrey", "Baratheon", "a1200007", "abc7", User.Role.STUDENT, new HashMap<Course, User.Grade>()));
-		addUser(new User("Myrcella", "Baratheon", "a1200008", "abc8", User.Role.STUDENT, new HashMap<Course, User.Grade>()));
-		addUser(new User("Tommen", "Baratheon", "a1200009", "abc9", User.Role.STUDENT, new HashMap<Course, User.Grade>()));
+		addUser(new User("Robb", "Stark", "a1200001", "abc1", "a1200595@unet.univie.ac.at", User.Role.STUDENT, new HashMap<Course, User.Grade>()));
+		addUser(new User("Jon", "Snow", "a1200002", "abc2", "a1200595@unet.univie.ac.at", User.Role.STUDENT, new HashMap<Course, User.Grade>()));
+		addUser(new User("Sansa", "Stark", "a1200003", "abc3", "a1200595@unet.univie.ac.at", User.Role.STUDENT, new HashMap<Course, User.Grade>()));
+		addUser(new User("Arya", "Stark", "a1200004", "abc4", "a1200595@unet.univie.ac.at", User.Role.STUDENT, new HashMap<Course, User.Grade>()));
+		addUser(new User("Bran", "Stark", "a1200005", "abc5", "a1200595@unet.univie.ac.at", User.Role.STUDENT, new HashMap<Course, User.Grade>()));
+		addUser(new User("Rickon", "Stark", "a1200006", "abc6", "a1200595@unet.univie.ac.at", User.Role.STUDENT, new HashMap<Course, User.Grade>()));
+		addUser(new User("Joffrey", "Baratheon", "a1200007", "abc7", "a1200595@unet.univie.ac.at", User.Role.STUDENT, new HashMap<Course, User.Grade>()));
+		addUser(new User("Myrcella", "Baratheon", "a1200008", "abc8", "a1200595@unet.univie.ac.at", User.Role.STUDENT, new HashMap<Course, User.Grade>()));
+		addUser(new User("Tommen", "Baratheon", "a1200009", "abc9", "a1200595@unet.univie.ac.at", User.Role.STUDENT, new HashMap<Course, User.Grade>()));
 	}
 	
 	private void initCourses() {

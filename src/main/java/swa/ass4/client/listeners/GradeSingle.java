@@ -5,6 +5,7 @@ import java.awt.event.ActionListener;
 import java.util.List;
 import java.util.Map;
 
+import javax.mail.MessagingException;
 import javax.swing.JOptionPane;
 import javax.ws.rs.client.Entity;
 import javax.ws.rs.client.WebTarget;
@@ -15,6 +16,7 @@ import swa.ass4.client.gui.CourseSelectPanel;
 import swa.ass4.client.gui.GradeSinglePanel;
 import swa.ass4.domain.Course;
 import swa.ass4.domain.User;
+import swa.ass4.client.MailHandler;
 
 public class GradeSingle implements ActionListener {
 	private User user;
@@ -53,7 +55,19 @@ public class GradeSingle implements ActionListener {
 				if (!studentCourses.get(course).equals(g)) {
 					studentCourses.put(course, g);
 
-					// TODO Mail Notification
+					// send mail notification
+					String text =
+						"Hello " + u.getFirstName() + " " + u.getLastName() + ",\n\n"
+						+ "a new grade has been entered:\n"
+						+ course.getName() + ": " + g;
+					
+					MailHandler mh = new MailHandler();
+					
+					try {
+						mh.sendMessage(u.getEmailAddress(), "New Grade", text);
+					} catch (MessagingException e1) {
+						System.err.println("Sending email failed");
+					}
 
 					Entity<User> userEntity = Entity.entity(u, MediaType.TEXT_XML);
 					User response = userTarget.request(MediaType.TEXT_XML).put(userEntity, User.class);

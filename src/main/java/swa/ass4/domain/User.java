@@ -18,25 +18,26 @@ public class User implements Comparable<User> {
 	private String lastName;
 	private String userName;
 	private String password;
+	private String emailAddress;
 	private Role role;
-	
 	private Map<Course, Grade> courses;
 	
 	public User() {
-		this("", "", "", "", null, null);
+		this("", "", "", "", "", null, null);
 	}
 	
-	public User(String firstName, String lastName, String userName, String password, Role role, Map<Course, Grade> grades) {
+	public User(String firstName, String lastName, String userName, String password, String emailAddress, Role role, Map<Course, Grade> courses) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.userName = userName;
 		this.password = password;
+		this.emailAddress = emailAddress;
 		this.role = role;
-		this.courses = grades;
+		this.courses = courses;
 	}
 	
 	public String toString() {
-		return firstName + " is a " + role.toString();
+		return userName;
 	}
 	
 	public String getFirstName() {
@@ -83,8 +84,16 @@ public class User implements Comparable<User> {
 		return courses;
 	}
 
-	public void setCourses(Map<Course, Grade> grades) {
-		this.courses = grades;
+	public void setCourses(Map<Course, Grade> courses) {
+		this.courses = courses;
+	}
+
+	public String getEmailAddress() {
+		return emailAddress;
+	}
+
+	public void setEmailAddress(String emailAddress) {
+		this.emailAddress = emailAddress;
 	}
 
 	public void addCourse(Course course, Grade grade) {

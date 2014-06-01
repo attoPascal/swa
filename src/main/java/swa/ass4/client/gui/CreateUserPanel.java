@@ -19,6 +19,7 @@ public class CreateUserPanel extends JPanel {
 	private JTextField lastNameField;
 	private JTextField userNameField;
 	private JTextField passwordField;
+	private JTextField mailField;
 	private JComboBox<User.Role> roleSelect;
 	
 	public CreateUserPanel() {
@@ -28,6 +29,7 @@ public class CreateUserPanel extends JPanel {
 		lastNameField = new JTextField();
 		userNameField = new JTextField();
 		passwordField = new JPasswordField();
+		mailField = new JTextField();
 		roleSelect = new JComboBox<>(User.Role.values());
 	    
 	    this.add(new JLabel("First Name:"));
@@ -42,6 +44,9 @@ public class CreateUserPanel extends JPanel {
 	    this.add(new JLabel("Password:"));
 	    this.add(passwordField, "growx");
 	    
+	    this.add(new JLabel("Email Address:"));
+	    this.add(mailField, "growx");
+	    
 	    this.add(new JLabel("Role:"));
 	    this.add(roleSelect, "growx");
 	}
@@ -52,6 +57,7 @@ public class CreateUserPanel extends JPanel {
 			lastNameField.getText(),
 			userNameField.getText(),
 			passwordField.getText(),
+			mailField.getText(),
 			roleSelect.getItemAt(roleSelect.getSelectedIndex()),
 			new HashMap<Course, User.Grade>()
 		);
